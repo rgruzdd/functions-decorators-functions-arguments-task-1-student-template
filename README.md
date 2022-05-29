@@ -1,7 +1,29 @@
-# Data types. Final task 1.
+### Functions. Decorators. Funstions arguments. Task 1. 
+***
 
-Write a Python program to print all unique values of all dictionaries in a list.
-Examples:
+We have a list of dictionaries:
+```python
+friends = [
+    {'name': 'Sam', 'gender': 'male', 'sport': 'Basketball'},
+    {'name': 'Emily', 'gender': 'female', 'sport': 'volleyball'},
+]
 ```
-Input: [{"V":"S001"}, {"V": "S002"}, {"VI": "S001"}, {"VI": "S005"}, {"VII":"S005"}, {"V":"S009"},{"VIII":"S007"}]
-Output: {'S005', 'S002', 'S007', 'S001', 'S009'}
+Create functions `query`, `select`, `field_filter` to work with lists similar to 
+`friends`.
+Stubs for these functions are already created.
+
+Example:
+```python
+>>> result = query(
+    friends,
+    select('name', 'gender', 'sport'),
+    field_filter('sport', *('Basketball', 'volleyball')),
+    field_filter('gender', *('male',)),
+)
+>>> result
+[{'gender': 'male', 'name': 'Sam', 'sport': 'Basketball'}]
+```
+These functions have to provide with possibility to select necessary columns
+and make filtering by these columns
+
+Do not forget the documentation for each function!
