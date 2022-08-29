@@ -34,7 +34,7 @@ def test_query():
     value = query(
         friends,
         select(*('name', 'gender', 'sport')),
-        field_filter(*('sport', *('Basketball', 'Volleyball'))),
+        field_filter(*('sport', *('Basketball', 'volleyball'))),
         field_filter(*('gender', *('male',))),
     )
     assert [{'gender': 'male', 'name': 'Sam', 'sport': 'Basketball'}] == value
