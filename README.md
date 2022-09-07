@@ -1,4 +1,4 @@
-### Functions. Decorators. Funstions arguments. Task 1. 
+### Functions. Decorators. Functions arguments. Task 1. 
 ***
 
 We have a list of dictionaries:
