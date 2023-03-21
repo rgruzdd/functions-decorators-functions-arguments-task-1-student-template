@@ -6,26 +6,42 @@ ModifierFunc = Callable[[DataType], DataType]
 
 def query(data: DataType, selector: ModifierFunc,
           *filters: ModifierFunc) -> DataType:
-    """
-    Query data with column selection and filters
+     filtered_data = selector(data)
+     for filter in filters:
+         filtered_data = filter(filtered_data)
 
-    :param data: List of dictionaries with columns and values
-    :param selector: result of `select` function call
-    :param filters: Any number of results of `field_filter` function calls
-    :return: Filtered data
-    """
-    pass
+     return filtered_data
+
 
 
 def select(*columns: str) -> ModifierFunc:
     """Return function that selects only specific columns from dataset"""
-    pass
+    search_fields = columns
 
+    def selector(data: DataType) -> DataType:
+        selected_list = []
+        for i in data:
+            selected_dict = {key: value for (key, value) in i.items() if key in search_fields}
+            selected_list.append(selected_dict)
+        data = selected_list
+        return data
+
+    return selector
 
 def field_filter(column: str, *values: Any) -> ModifierFunc:
     """Return function that filters specific column to be one of `values`"""
-    pass
+    flt_key = column
+    flt_values = values
 
+    def filter(data: DataType) -> DataType:
+        filtered_list = []
+        for i in data:
+            if (flt_key in i.keys() and i[flt_key] in flt_values) or not (flt_key in i.keys()):
+                filtered_list.append(i)
+            data = filtered_list
+            return data
+
+    return filter
 
 def test_query():
     friends = [
