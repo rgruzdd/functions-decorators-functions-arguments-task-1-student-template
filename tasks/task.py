@@ -9,10 +9,7 @@ def query(data: DataType, selector: ModifierFunc,
      filtered_data = selector(data)
      for filter in filters:
          filtered_data = filter(filtered_data)
-
      return filtered_data
-
-
 
 def select(*columns: str) -> ModifierFunc:
     """Return function that selects only specific columns from dataset"""
@@ -25,7 +22,6 @@ def select(*columns: str) -> ModifierFunc:
             selected_list.append(selected_dict)
         data = selected_list
         return data
-
     return selector
 
 def field_filter(column: str, *values: Any) -> ModifierFunc:
@@ -39,8 +35,7 @@ def field_filter(column: str, *values: Any) -> ModifierFunc:
             if (flt_key in i.keys() and i[flt_key] in flt_values) or not (flt_key in i.keys()):
                 filtered_list.append(i)
             data = filtered_list
-            return data
-
+        return data
     return filter
 
 def test_query():
