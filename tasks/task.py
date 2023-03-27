@@ -45,7 +45,8 @@ def field_filter(column: str, *values: Any) -> ModifierFunc:
 
 def test_query():
     friends = [
-        {'name': 'Sam', 'gender': 'male', 'sport': 'Basketball'}
+        {'name': 'Sam', 'gender': 'male', 'sport': 'Basketball'},
+        {'name': 'Emily', 'gender': 'female', 'sport': 'volleyball'}
     ]
     value = query(
         friends,
